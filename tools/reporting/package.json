@@ -1,0 +1,7 @@
+{
+  "name": "practice-automation-ui-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local Allure Report generator for the Python Selenium suite",
+  "devDependencies": {"allure": "3.22.0"}
+}

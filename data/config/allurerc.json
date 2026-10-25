@@ -1,0 +1,12 @@
+{
+  "name": "Volga IT: Selenium UI",
+  "plugins": {
+    "awesome": {
+      "options": {
+        "singleFile": true,
+        "reportLanguage": "ru",
+        "groupBy": ["feature", "story"]
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+name: Selenium UI
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONIOENCODING: utf-8
+
+jobs:
+  quality:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Check source and documented scenarios
+        run: python app.py check
+      - name: Save quality results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: quality
+          path: data/results/check/
+          if-no-files-found: warn
+          retention-days: 14
+
+  ui:
+    needs: quality
+    runs-on: windows-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, firefox]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Run UI tests
+        run: python app.py --browser ${{ matrix.browser }} --workers 2 --no-report --no-pause
+      - name: Verify browser results
+        run: python app.py verify --browser ${{ matrix.browser }}
+      - name: Save JUnit, Allure and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-${{ matrix.browser }}
+          path: data/results/run-*/
+          if-no-files-found: warn
+          retention-days: 14
+
+  report:
+    needs: [quality, ui]
+    if: ${{ always() && !cancelled() && needs.quality.result == 'success' }}
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Download both browser artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: ui-*
+          path: data/results/artifacts/
+      - name: Build combined Allure report
+        run: python -B -m tools.ci.merge_results data/results/artifacts data/results/combined
+      - name: Verify combined report
+        run: python app.py verify --browser both --folder data/results/combined
+      - name: Save combined report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: allure-report
+          path: data/results/combined/
+          if-no-files-found: warn
+          retention-days: 14

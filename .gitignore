@@ -1,0 +1,9 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.cache/
+tools/.venv/
+tools/.runtime/
+tools/reporting/node_modules/
+data/results/
+*.py[cod]
