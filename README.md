@@ -41,7 +41,7 @@ python app.py --browser both
 
 При первом запуске `app.py` создаёт виртуальное окружение `tools/.venv/` и устанавливает зависимости Python и Allure. 
 
-<img width="1116" height="654" alt="photo_2026-10-25_17-04-42" src="https://github.com/user-attachments/assets/25bbaefb-34da-462f-a1e8-4227d9bc747c" />
+<img width="1116" height="654" alt="1" src="https://github.com/user-attachments/assets/d488c6d3-652f-4f09-a51b-719645f0a98f" />
 
 Для формирования HTML-отчёта используется
 Node.js с npm; при отсутствии подходящей версии локальная копия устанавливается
@@ -51,7 +51,7 @@ Node.js с npm; при отсутствии подходящей версии л
 Allure предусмотрено до трёх попыток и резервная загрузка недостающих пакетов.
 Журналы подготовки создаются в `data/results/setup/`.
 
-<img width="1113" height="657" alt="photo_2026-10-25_17-04-42 (2)" src="https://github.com/user-attachments/assets/a441c79b-648e-4e03-b18c-d30568577954" />  <br>
+<img width="1113" height="657" alt="2" src="https://github.com/user-attachments/assets/6e9aeacc-a418-4908-bd23-06822b5359d4" />
 
 
 | Команда | Режим выполнения |
@@ -71,7 +71,8 @@ Allure предусмотрено до трёх попыток и резервн
 Параметр `--sequential` запускает браузеры по очереди. Параметр `--ui-timeout`
 задаёт предел ожидания элемента в секундах; значение по умолчанию – 15.
 
-<img width="1000" height="542" alt="image" src="https://github.com/user-attachments/assets/8a2ae943-856a-43da-8277-988bce6f9f2e" />
+<img width="1000" height="542" alt="3" src="https://github.com/user-attachments/assets/32c97e97-797e-47dc-ab6d-cc938f84affa" />
+
 
 Ctrl+C останавливает текущий запуск. В интерактивном режиме после вывода статистики,
 затраченного времени и пути к отчёту программа ожидает Enter.
@@ -85,7 +86,7 @@ Ctrl+C останавливает текущий запуск. В интерак
 .\tools\.venv\Scripts\python.exe -m pytest -c data/config/pytest.ini --rootdir=. --browser chrome -n 4 --dist worksteal
 ```
 
-<img width="1406" height="528" alt="image" src="https://github.com/user-attachments/assets/c9a65076-ce2d-42ec-b2a5-d3c88e4fb771" /> <br>
+<img width="1406" height="528" alt="4" src="https://github.com/user-attachments/assets/53ff712d-2575-4be5-91ef-1fabbda4aabf" /><br>
 
 
 В этом режиме Allure JSON сохраняется в `data/results/direct/allure-results/`.
@@ -113,7 +114,7 @@ Ctrl+C останавливает текущий запуск. В интерак
 Отчёт содержит статусы, длительности, шаги и ожидаемые результаты проверок.
 Для неуспешных проверок прикрепляются диагностические вложения.
 
-<img width="1145" height="905" alt="image" src="https://github.com/user-attachments/assets/746132ec-709f-4951-b9ed-35b3e62ac64f" />
+<img width="1145" height="905" alt="5" src="https://github.com/user-attachments/assets/2cea65c6-3e09-4d04-a083-abe70d35e948" />
 
 
 <a id="scope"></a>
@@ -230,7 +231,7 @@ Working set: сумма резидентной памяти процессов. 
 Средняя память вычисляется интегрированием отсчётов, CPU – с учётом длительности интервалов.
 Пик соответствует максимальному отсчёту; пики между отсчётами не регистрируются.
 
-<img width="640" height="495" alt="image" src="https://github.com/user-attachments/assets/f2085755-08c8-4614-b072-264f2503afe1" />
+<img width="640" height="495" alt="6" src="https://github.com/user-attachments/assets/bb3ae987-d45c-45d5-ba07-f5b673702cd2" />
 
 
 ### Длительности фаз при 4 исполнителях
@@ -254,7 +255,7 @@ Working set: сумма резидентной памяти процессов. 
 Длительность выполнения Pytest для Chrome сохраняется в поле
 `browsers.chrome.wall_seconds` файла `run.json`, создаваемого при запуске.
 
-<img width="1911" height="487" alt="image" src="https://github.com/user-attachments/assets/37760cbe-2e4d-4890-a648-5267029db715" />
+<img width="1911" height="487" alt="7" src="https://github.com/user-attachments/assets/7d5af780-0e52-4e7f-8891-1e3c4fe62f15" />
 
 
 <a id="verification"></a>
@@ -277,7 +278,7 @@ Working set: сумма резидентной памяти процессов. 
 Для выбора другого каталога результатов используется параметр `--folder`.
 Если сформирован HTML-отчёт, проверяются его наличие и итоговая статистика.
 
-<img width="1266" height="671" alt="image" src="https://github.com/user-attachments/assets/8878c016-bffa-4ef4-b4f1-8fb4340dec4d" />
+<img width="1266" height="671" alt="8" src="https://github.com/user-attachments/assets/e260a2dd-0fa8-4cea-9f1b-1bfb18e5e397" />
 
 
 GitHub Actions выполняет проверку кода, тесты в Chrome и Firefox и сборку общего
@@ -321,9 +322,9 @@ GitHub Actions выполняет проверку кода, тесты в Chrom
 | ID | Сценарий | Шаги и данные | Ожидаемый результат |
 |---|---|---|---|
 | MOD-N01 | Пустое имя не пропускает отправку | Открыть Form Modal; оставить Name пустым; ввести Email=qa@example.com; Submit. | Ошибка Name: This field is required. Атрибут aria-invalid=true. Общее сообщение: Please fill out the form correctly. Сводка успешной отправки отсутствует. |
-| MOD-N02[double_at] | Email с двумя @ отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=qa@@example.com, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
-| MOD-N02[missing_at] | Email без @ отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=not-an-email, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
-| MOD-N02[missing_domain] | Email без домена отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=qa@, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
+| MOD-N02 | Email с двумя @ отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=qa@@example.com, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
+| MOD-N02 | Email без @ отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=not-an-email, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
+| MOD-N02 | Email без домена отклоняется | Открыть Form Modal; ввести Name=Volga QA, Email=qa@, Message=Keep message; Submit. | Показаны точные ошибки email и формы, aria-invalid=true и typeMismatch=true; отправки нет; все значения сохранены. |
 | MOD-N03 | Escape не закрывает Simple Modal | Открыть Simple Modal и нажать Escape; наблюдать 1,2 секунды. | Окно остаётся активным и видимым весь интервал. |
 | MOD-N04 | Клик вне Simple Modal не закрывает его | Открыть Simple Modal и нажать на затемнённую область вне окна; наблюдать 1,2 секунды. | Окно остаётся активным и видимым весь интервал. |
 | MOD-N05 | Клик вне Form Modal не закрывает его | Открыть Form Modal и нажать на затемнённую область вне окна; наблюдать 1,2 секунды. | Окно и поле Name остаются видимыми; подтверждения отправки нет. |
@@ -372,4 +373,4 @@ GitHub Actions выполняет проверку кода, тесты в Chrom
 | FF-S01 | Список Automation Tools переносится в Message | Прочитать элементы Automation Tools через Selenium, проверить состав и порядок, соединить названия через запятую и ввести строку в Message. | Список содержит Selenium, Playwright, Cypress, Appium, Katalon Studio в этом порядке; Message равен строке из прочитанных названий. |
 <!-- SCENARIOS:END -->
 
-<img width="871" height="905" alt="image" src="https://github.com/user-attachments/assets/7efeb8eb-b94b-4235-b11f-537052191112" />
+<img width="871" height="905" alt="9" src="https://github.com/user-attachments/assets/255bcc8b-475f-46de-b7cd-df4ec43f5454" />
